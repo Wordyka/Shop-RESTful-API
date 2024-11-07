@@ -18,15 +18,12 @@ public class UpdateCustomerRequest {
 	@NotBlank
 	private String id;
 
-	@NotBlank
 	@Size(max=15)
 	private String phoneNumber;
-	
-	@NotBlank
+
 	@Email
 	private String email;
-	
-	@NotBlank
+
 	private String address;
 	
 }

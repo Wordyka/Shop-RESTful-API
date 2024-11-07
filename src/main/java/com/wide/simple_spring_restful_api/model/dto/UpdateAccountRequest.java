@@ -18,13 +18,10 @@ public class UpdateAccountRequest {
     @JsonIgnore
     private String accountNumber;
 
-    @NotBlank
     private String accountType;
 
-    @NotBlank
     private String accountName;
 
-    @NotNull
     private Double accountBalance;
 
     @JsonIgnore

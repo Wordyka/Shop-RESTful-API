@@ -1,0 +1,61 @@
+### Create Customer
+
+POST http://localhost:8090/api/customers
+Accept: application/json
+Content-Type: application/json
+
+{
+  "address": "Jakarta",
+  "email": "customer4@gmail.com",
+  "phoneNumber": "46456456"
+}
+
+### Get Customer
+GET http://localhost:8090/api/customers
+Accept: application/json
+
+
+### Update Customer
+PUT http://localhost:8090/api/customers/223
+Accept: application/json
+Content-Type: application/json
+
+{
+  "address": "Medan"
+}
+
+### Delete Customer
+DELETE http://localhost:8090/api/customers/223
+Accept: application/json
+
+
+### Create Account
+POST http://localhost:8090/api/customers/226/accounts
+Accept: application/json
+Content-Type: application/json
+
+{
+  "accountNumber": "2342342",
+  "accountName": "Saving Account",
+  "accountType": "Saving",
+  "accountBalance": 13131.92
+}
+
+
+### Get Account
+GET http://localhost:8090/api/customers/226/accounts
+Accept: application/json
+
+### Update Account
+PUT http://localhost:8090/api/customers/226/accounts/2342342
+Accept: application/json
+Content-Type: application/json
+
+{
+  "accountBalance": 1231132.92
+}
+
+### Delete Account
+### Delete Customer
+DELETE http://localhost:8090/api/customers/226/accounts/2342342
+Accept: application/json

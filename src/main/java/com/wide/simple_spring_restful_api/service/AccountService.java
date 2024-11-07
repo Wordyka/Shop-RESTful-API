@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -109,10 +110,20 @@ public class AccountService {
 
         // Update the account fields, including the account number
         account.setAccountNumber(originalAccountNumber);
-        account.setAccountType(updateAccountRequest.getAccountType());
-        account.setAccountName(updateAccountRequest.getAccountName());
-        account.setAccountBalance(updateAccountRequest.getAccountBalance());
+        if (Objects.nonNull(updateAccountRequest.getAccountType())) {
+            account.setAccountType(updateAccountRequest.getAccountType());
+        }
+
+        if (Objects.nonNull(updateAccountRequest.getAccountName())) {
+            account.setAccountName(updateAccountRequest.getAccountName());
+        }
+
+        if (Objects.nonNull(updateAccountRequest.getAccountBalance())) {
+            account.setAccountBalance(updateAccountRequest.getAccountBalance());
+        }
+
         account.setCustomer(customer);
+
 
         // Log the updated account number
         log.info("Updated Account Number after set: {}", account.getAccountNumber());

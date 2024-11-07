@@ -1,6 +1,7 @@
 package com.wide.simple_spring_restful_api.service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -73,9 +74,18 @@ public class CustomerService {
 		Customer customer = customerRepository.findById(updateCustomerRequest.getId())
 				.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
 
-		customer.setAddress(updateCustomerRequest.getAddress());
-		customer.setPhoneNumber(updateCustomerRequest.getPhoneNumber());
-		customer.setEmail(updateCustomerRequest.getEmail());
+		if (Objects.nonNull(updateCustomerRequest.getAddress())) {
+			customer.setAddress(updateCustomerRequest.getAddress());
+		}
+
+		if (Objects.nonNull(updateCustomerRequest.getPhoneNumber())) {
+			customer.setPhoneNumber(updateCustomerRequest.getPhoneNumber());
+		}
+
+		if (Objects.nonNull(updateCustomerRequest.getEmail())) {
+			customer.setEmail(updateCustomerRequest.getEmail());
+		}
+
 		customerRepository.save(customer);
 
 		return toCustomerResponse(customer);
