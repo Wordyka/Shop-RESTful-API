@@ -16,7 +16,7 @@ Accept: application/json
 
 
 ### Update Customer
-PUT http://localhost:8090/api/customers/223
+PUT http://localhost:8090/api/customers/258
 Accept: application/json
 Content-Type: application/json
 

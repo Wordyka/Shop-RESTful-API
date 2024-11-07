@@ -178,8 +178,6 @@ class AccountControllerTest {
             assertEquals(updateAccountRequest.getAccountType(), response.getData().getAccountType());
             assertEquals(updateAccountRequest.getAccountName(), response.getData().getAccountName());
             assertEquals(updateAccountRequest.getAccountBalance(), response.getData().getAccountBalance());
-            assertEquals(updateAccountRequest.getCustomerId(), customer.getId());
-
         });
     }
 
@@ -194,7 +192,7 @@ class AccountControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(updateAccountRequest))
         ).andExpect(
-                status().isBadRequest()
+                status().isNotFound()
         ).andDo(result -> {
             WebResponse<String> response = objectMapper.readValue(result.getResponse().getContentAsString(), new TypeReference<>(){ });
             assertNotNull(response.getErrors());

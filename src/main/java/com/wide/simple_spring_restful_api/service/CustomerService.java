@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.wide.simple_spring_restful_api.model.AccountResponse;
 import com.wide.simple_spring_restful_api.model.CustomerResponse;
 import com.wide.simple_spring_restful_api.model.dto.PagingCustomerRequest;
 import com.wide.simple_spring_restful_api.model.dto.UpdateCustomerRequest;
@@ -53,11 +54,21 @@ public class CustomerService {
 	}
 
 	private CustomerResponse toCustomerResponse(Customer customer) {
+		List<AccountResponse> accountResponses = customer.getAccounts().stream()
+				.map(account -> AccountResponse.builder()
+						.accountNumber(account.getAccountNumber())
+						.accountType(account.getAccountType())
+						.accountName(account.getAccountName())
+						.accountBalance(account.getAccountBalance())
+						.build())
+				.toList();
+
 		return CustomerResponse.builder()
 				.id(customer.getId())
 				.phoneNumber(customer.getPhoneNumber())
 				.email(customer.getEmail())
 				.address(customer.getAddress())
+				.account(accountResponses)
 				.build();
 	}
 
