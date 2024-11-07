@@ -4,8 +4,15 @@ This document specifies the endpoints and expected behavior for managing account
 
 ## Get All Accounts
 
-Endpoint: GET /api/accounts
+Endpoint: GET /api/customers/{customerId}/accounts
 
+Path Parameter :
+
+```json
+{
+	"customerId" : "10"
+}
+```
 
 Response Body (Success) :
 
@@ -15,14 +22,14 @@ Response Body (Success) :
    	   "accountNumber": "123456789",
    	   "accountType": "Savings",
    	   "accountName": "Savings Account",
-   	   "accountBalance": 5000.00
+   	   "accountBalance": 5000.00,
    	   "customerID" : 1
    	 },
 	{
    	   "accountNumber": "12314234",
    	   "accountType": "Checking",
    	   "accountName": "Primary Account",
-   	   "accountBalance": 4500.75
+   	   "accountBalance": 4500.75,
    	   "customerID" : 2
    	 }
 ]
@@ -31,13 +38,14 @@ Response Body (Success) :
 
 ## Get Account By Number
 
-Endpoint: GET /api/accounts/{id}
+Endpoint: GET /api/customers/{customerId}/accounts/{accountNumber}
 
 Path Parameter : 
 
 ```json
 {
-	"id" : "1"
+    "customerId" : "10",
+    "account Number" : "1"
 }
 ```
 
@@ -49,7 +57,7 @@ Response Body (Success) :
    "accountNumber": "123456789",
    "accountType": "Savings",
    "accountName": "Savings Account",
-   "accountBalance": 5000.00
+   "accountBalance": 5000.00,
    "customerID" : 1
  }
 
@@ -68,6 +76,13 @@ Response Body (Failed) :
 ## Create Account
 
 Endpoint : POST /api/customers/{customerId}/accounts
+
+
+```json
+{
+	"customerId" : "10"
+}
+```
 
 Request Body : 
 
@@ -104,13 +119,16 @@ Response Body (Failed) :
 
 ## Update Account
 
-Endpoint : PUT /api/accounts/{id}
+Endpoint : PUT /api/customers/{customerId}/accounts/{accountNumber}
 
 Path Parameter : 
 
+Path Parameter :
+
 ```json
 {
-	"id" : 1
+  "customerId" : "10",
+  "account Number" : "1"
 }
 ```
 
@@ -147,13 +165,16 @@ Response Body (Failed) :
 ## Delete Account
 
 
-Endpoint: DELETE /api/accounts/{id}
+Endpoint: DELETE /api/customers/{customerId}/accounts/{accountNumber}
 
 Path Parameter : 
 
+Path Parameter :
+
 ```json
 {
-	"id" : 1
+  "customerId" : "10",
+  "account Number" : "1"
 }
 ```
 
