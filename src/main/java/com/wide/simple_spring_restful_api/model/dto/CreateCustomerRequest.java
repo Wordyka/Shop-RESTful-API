@@ -14,15 +14,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class CreateCustomerRequest {
-	@NotBlank
-	@Size(max=15)
-	private String phoneNumber;
-	
-	@NotBlank
-	@Email
-	private String email;
-	
-	@NotBlank
-	private String address;
-	
+    @NotBlank
+    @Size(max = 15)
+    private String phoneNumber;
+
+    @NotBlank
+    @Email
+    private String email;
+
+    @NotBlank
+    private String address;
+
 }

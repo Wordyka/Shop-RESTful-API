@@ -25,7 +25,7 @@ public class UpdateAccountRequest {
     private Double accountBalance;
 
     @JsonIgnore
-    @Column(name="customer_id")
+    @Column(name = "customer_id")
     @NotNull
     private int customerId;
 }
