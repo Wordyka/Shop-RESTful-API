@@ -55,12 +55,21 @@ public class CustomerService {
 	}
 
 	private CustomerResponse toCustomerResponse(Customer customer) {
+		List<AccountResponse> accountResponses = customer.getAccounts().stream()
+				.map(account -> AccountResponse.builder()
+						.accountNumber(account.getAccountNumber())
+						.accountType(account.getAccountType())
+						.accountName(account.getAccountName())
+						.accountBalance(account.getAccountBalance())
+						.build())
+				.toList();
+
 		return CustomerResponse.builder()
 				.id(customer.getId())
 				.phoneNumber(customer.getPhoneNumber())
 				.email(customer.getEmail())
 				.address(customer.getAddress())
-				.account(null)
+				.account(accountResponses)
 				.build();
 	}
 
